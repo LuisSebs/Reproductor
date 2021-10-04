@@ -1,0 +1,205 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap'); 
+
+:root { /*INVESTIGA QUE RAYOS ES ESTA SINTAXIS*/
+    --background: #e0e5ec;
+    --gray: #797d7f;
+}
+
+
+
+body {
+	background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+	background-size: 400% 400%;
+	animation: gradient 5s ease infinite;
+    font-family: 'Roboto', sans-serif;
+}
+
+
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;/*INVESTIGAR MIN-HEIGHT*/
+}
+
+.player{
+    width: 300px;
+    height: 550px;
+    background-color: var(--background);
+    display: flex;
+    flex-direction: column; /*INVESTIGAR flex-direction: column;*/
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    box-shadow: 9px 9px 10px rgba(163, 177, 198, 0.5)/*Priemer sombra*/,-9px -9px 16px rgba(255, 255, 255, 0.5)/*Segunda sombra*/;
+    overflow: hidden;
+}
+
+.player__controls {
+    display: flex;
+    width: 95%;
+    justify-content: space-evenly; /*INVESTIGAR ESTO (space-evenly)*/
+    align-items: center;
+}
+
+.player__btn{
+    cursor: pointer;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    color: var(--gray);
+    box-shadow: -8px -8px 20px 0px #fff9,  
+                8px 8px 20px 0px #0001,
+                -6px -6px 20px 0px #ffffff,
+                6px 6px 6px 0px #0001;
+    justify-content: center;
+    align-items: center;
+}
+
+.player__btn:active {
+    box-shadow: inset 5px 5px 10px #c5c5c5,
+    inset -5px -5px 10px #fbfbfb;
+}
+.player__btn--small{
+    min-width: 50px; /*INVESTIGAR*/
+    min-height: 50px; /*INVESTIGAR*/
+}
+
+.player__title {
+     font-weight: 600;
+     font-size: 0.8rem;
+     color: #a1a1a1;
+     text-transform: uppercase; /*INVESTIGAR*/
+     letter-spacing: 2px;
+     margin: 0;
+}
+
+.player__album {
+    width: 300px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+
+.player__img {
+    width: 150px;
+    height: 100%;
+    border-radius: 50%; /*ESTA LINEA REALIZA UN CIRCULO EN LA IMAGEN*/
+    box-shadow: 2px 2px 7px rgb(163, 177, 198), 
+    2px 2px 7px rgb(163, 177, 198),
+    -8px -8px 50px rgba(255, 255, 255, 0.8) 
+    , 3px 3px 25px rgba(0,0,0,0.6);
+    /*animation: colorama 10s linear infinite;*/
+}
+
+/*@keyframes colorama {
+    0%{filter: hue-rotate(0deg);}
+    100%{filter: hue-rotate(360deg);}
+}*/
+
+.player__artist {
+    font-size: 1em;
+    font-weight: 100px;
+    opacity: 0.5;
+    margin: 20px 0px 0px 0px;
+}
+
+.player__song {
+    width: 100%;
+    text-align: center;
+    font-weight: 400;
+    font-size: 1em;
+    opacity: 50%;
+    margin: 0;
+    position: relative; /*D E S C O M E N T A  E S T A L I N E A  A L F I N A L*/
+}
+
+.player__level{
+    width: 80%;
+    -webkit-appearance: none;
+    outline: none;
+    border: none;
+    padding: 0;
+    margin-top: 40px;
+}
+
+.player__level::-webkit-slider-runnable-track{ /*INVESTIGAR (modifica la ranura de </input type="range">)*/
+    background-color: #d7dbdd;
+    border-radius: 3px;
+    height: 6px;
+}
+
+/*thumb se le conoce al deslizador  (bolita) de un input range*/
+/*track se le conoce a  la barra donde se desliza el thumb*/
+
+/*SEBAS PERSONALIZACION
+.player__level::-webkit-slider-thumb {
+    -webkit-appearance: none;
+  border: 1px solid #000000;
+  height: 10px;
+  width: 10px;
+  transform: translateY(13px);
+  border-radius: 50%;
+  background: #ffffff;
+  cursor: pointer;
+  margin-top: -14px;
+}*/
+
+.player__level::-webkit-slider-thumb{
+    -webkit-appearance: none;
+    border-radius: 100%;
+    background-color: #5c87fe;
+    height: 18px;
+    width: 18px;
+    margin-top: -7px;
+}
+
+.audio__duration {
+    margin-top: -30px;
+    display: flex;
+    width: 78%;
+    font-size: 10px;
+    font-weight: 600;
+    color: #a1a1a1;
+    letter-spacing: 1px; /*CAMBIAR LA DISTANCIA ENTRE LETRAS*/
+}
+
+.start {
+    flex: auto; /*INVESTIGA ESTA PROPIEDAD. SEPARÓ EL start DEL end*/
+}
+
+.player__audio {
+    /*display: none; /*ES DIFERENTE A VISIBILITY, YA QUE ESTA LINEA NO LO PRESENTA QUITANDO EL ESPACIO QUE LE CORRESPONDERIA A ESTE ELEMENTO https://cybmeta.com/display-none-vs-visibility-hidden-y-tu-como-escondes-las-cosas*/
+    visibility: hidden; /*ESTE LO OCULTA TOMANDO EN CUENTA EL ESPACIO*/
+}
+
+.player__btn--medium {
+    min-width: 70px;
+    min-height: 70px;
+    /*Con la primer clase que tienen estos elementos es donde se añaden las sombras y estilos de las cajas que los almacenan pero para que sea visible tenemos que definir una altura y un ancho.*/
+}
+
+.blue{
+    background-color: #5c87fe;
+    color: #fff;
+}
+
+.hide {
+    display: none;
+}
+
+
